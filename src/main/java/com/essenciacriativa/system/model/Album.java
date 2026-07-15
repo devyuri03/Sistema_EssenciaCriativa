@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,20 +25,15 @@ public class Album {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String nome;
 
-    @Column
-    private Date data_ensaio;
+    private LocalDate dataEnsaio;
 
-    @Column
-    private Date expiracao;
-
-    @Column
-    private String status;
+    private LocalDate expiraEm;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusAlbum statusAlbum;
+    private StatusAlbum status;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cliente_id")

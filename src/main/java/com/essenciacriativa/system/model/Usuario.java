@@ -1,5 +1,6 @@
 package com.essenciacriativa.system.model;
 
+import com.essenciacriativa.system.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -34,7 +34,7 @@ public class Arquivo {
     @Column
     private LocalDateTime criadoEm;
 
-    @ManyToOne
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "album_id")
     private Album album;
