@@ -9,9 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class UsuarioService {
@@ -26,7 +25,7 @@ public class UsuarioService {
 
     public UsuarioResponseDTO criarUsuario(UsuarioRequestDTO dto){
         if (usuarioRepository.findByEmail(dto.email()).isPresent()){
-            throw new IllegalArgumentException("Email ja cadastrado no sistema" + dto.email());
+            throw new IllegalArgumentException("Email ja cadastrado no sistema: " + dto.email());
         }
 
         Usuario usuario = new Usuario();
@@ -49,17 +48,16 @@ public class UsuarioService {
 
     }
 
-    public UsuarioResponseDTO buscarporId (Long id){
-        Optional<Usuario> opt = usuarioRepository.findById(id);
-        if (opt.isEmpty()) {
-            throw new IllegalArgumentException("Cliente não encontrado");
-        }
-        return UsuarioResponseDTO.from(opt.get());
+    public UsuarioResponseDTO buscarPorId (Long id){
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado: " +id));
+        return UsuarioResponseDTO.from(usuario);
+
     }
 
     public void excluirCliente(Long id){
         Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado: " +id));
 
         usuarioRepository.delete(usuario);
 

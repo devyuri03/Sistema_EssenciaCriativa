@@ -31,7 +31,7 @@ public class UsuarioController {
 
     @GetMapping("/clientes/{id}")
     public ResponseEntity<UsuarioResponseDTO> buscarPorId(@PathVariable long id) {
-        return ResponseEntity.ok(usuarioService.buscarporId(id));
+        return ResponseEntity.ok(usuarioService.buscarPorId(id));
     }
 
     @DeleteMapping("/clientes/{id}")
