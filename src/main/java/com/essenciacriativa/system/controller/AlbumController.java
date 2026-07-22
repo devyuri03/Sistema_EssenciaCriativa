@@ -40,4 +40,6 @@ public class AlbumController {
         albumService.excluirAlbum(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }

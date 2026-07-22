@@ -6,6 +6,7 @@ import com.essenciacriativa.system.enums.Role;
 import com.essenciacriativa.system.model.Usuario;
 import com.essenciacriativa.system.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -62,5 +63,6 @@ public class UsuarioService {
         usuarioRepository.delete(usuario);
 
     }
+
 
 }
